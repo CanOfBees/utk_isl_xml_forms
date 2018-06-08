@@ -64,17 +64,25 @@
     <xsl:variable name="vDigits" select="'0123456789'"/>
     <xsl:variable name="vID" select="."/>
 
-    <xsl:if test="string-length(translate(substring($vID, 1, 4), $vDigits, '')) = 0
+    <xsl:choose>
+      <xsl:when test="string-length(translate(substring($vID, 1, 4), $vDigits, '')) = 0
                       and substring($vID, 5, 1) = '-'
                       and string-length(translate(substring($vID, 6, 4), $vDigits, '')) = 0
                       and substring($vID, 10, 1) = '-'
                       and string-length(translate(substring($vID, 11, 4), $vDigits, '')) = 0
                       and substring($vID, 15, 1) = '-'
                       and string-length(translate(substring($vID, 16, 4), $vDigits, '')) = 0">
-      <xsl:attribute name="valueURI">
-        <xsl:value-of select="concat('http://orcid.org/', $vID)"/>
-      </xsl:attribute>
-    </xsl:if>
+        <xsl:attribute name="valueURI">
+          <xsl:value-of select="concat('http://orcid.org/', $vID)"/>
+        </xsl:attribute>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:copy>
+          <xsl:apply-templates select="@type"/>
+          <xsl:apply-templates/>
+        </xsl:copy>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <!--
