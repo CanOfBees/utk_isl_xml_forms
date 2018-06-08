@@ -61,9 +61,20 @@
     in this template. this overrides the default identity transform.
   -->
   <xsl:template match="mods:name[@authority='orcid']/@valueURI[(not(.='')) and (not(starts-with(.,'http://orcid.org')))]">
-    <xsl:attribute name="valueURI">
-        <xsl:value-of select="concat('http://orcid.org/', .)"/>
-    </xsl:attribute>
+    <xsl:variable name="vDigits" select="'0123456789'"/>
+    <xsl:variable name="vID" select="."/>
+
+    <xsl:if test="string-length(translate(substring($vID, 1, 4), $vDigits, '')) = 0
+                      and substring($vID, 5, 1) = '-'
+                      and string-length(translate(substring($vID, 6, 4), $vDigits, '')) = 0
+                      and substring($vID, 10, 1) = '-'
+                      and string-length(translate(substring($vID, 11, 4), $vDigits, '')) = 0
+                      and substring($vID, 15, 1) = '-'
+                      and string-length(translate(substring($vID, 16, 4), $vDigits, '')) = 0">
+      <xsl:attribute name="valueURI">
+        <xsl:value-of select="concat('http://orcid.org/', $vID)"/>
+      </xsl:attribute>
+    </xsl:if>
   </xsl:template>
 
   <!--
