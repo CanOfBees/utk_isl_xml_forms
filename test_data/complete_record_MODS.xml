@@ -3,14 +3,14 @@
   <mods:titleInfo>
     <mods:title>adlkfj;lkjasdf</mods:title>
   </mods:titleInfo>
-  <mods:name type="personal" authority="orcid" authorityURI="http://id.loc.gov/vocabulary/identifiers/orcid.html" valueURI="1234-2345-3456-4567">
+  <mods:name type="personal" authority="orcid" authorityURI="http://id.loc.gov/vocabulary/identifiers/orcid.html" valueURI="12345-2345-3456-4567">
     <mods:namePart type="given">First</mods:namePart>
     <mods:namePart type="family">Last</mods:namePart>
     <mods:role>
       <mods:roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/aut">author</mods:roleTerm>
     </mods:role>
   </mods:name>
-  <mods:name type="personal" authority="orcid" authorityURI="http://id.loc.gov/vocabulary/identifiers/orcid.html" valueURI="2345-3456-4567-5678">
+  <mods:name type="personal" authority="orcid" authorityURI="http://id.loc.gov/vocabulary/identifiers/orcid.html" valueURI="2345x3456-4567-5678">
     <mods:displayForm>First Last</mods:displayForm>
     <mods:role>
       <mods:roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/ths">Thesis advisor</mods:roleTerm>
